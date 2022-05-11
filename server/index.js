@@ -4,16 +4,16 @@ const cors = require('cors');
 
 const app = express();
 
-// middleware
-app.use(bodyParser.json);
+// Middleware
+app.use(bodyParser.json());
 app.use(cors());
 
-// handle production
+// Handle production
 if (process.env.NODE_ENV === 'production') {
-  // static folder
+  // Static folder
   app.use(express.static(__dirname + '/public/'));
 
-  // handle SPA (single page application)
+  // Handle SPA
   app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
 }
 
